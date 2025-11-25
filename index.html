@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ittahad Uz Zaman - Senior Software Engineer specializing in .NET, microservices, CQRS, and cloud architecture. Ex-Lead at SELISE, currently at BRAC IT.">
+    <meta name="keywords"
+        content="Software Engineer, .NET, Microservices, CQRS, Cloud Architecture, Full Stack Developer">
+    <meta name="author" content="Ittahad Uz Zaman">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ittahad Uz Zaman - Senior Software Engineer">
+    <meta property="og:description" content="Senior Software Engineer @ BRAC IT | Ex-Lead at SELISE Signature">
+    <meta property="og:type" content="website">
+
+    <title>Ittahad Uz Zaman - Senior Software Engineer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-text">IZ</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#articles" class="nav-link">Articles</a>
+                <a href="#opensource" class="nav-link">Open Source</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun sun-icon"></i>
+        <i class="fas fa-moon moon-icon"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting">Hi, I'm</p>
+                <h1 class="hero-name">Ittahad Uz Zaman</h1>
+                <div class="hero-title">
+                    <span class="typing-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    Senior Software Engineer specializing in .NET microservices, CQRS architecture, and cloud-native
+                    applications.
+                    Passionate about building scalable, maintainable software solutions.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Get In Touch</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/ittahad" target="_blank" rel="noopener noreferrer"
+                        class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/ittahad" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:contact@ittahad.site" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get To Know Me</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        As a Senior Software Engineer at BRAC IT Services Ltd, I develop and maintain microservices in
+                        .NET with CQRS architecture pattern and Domain Driven Design. My day-to-day work consists of the
+                        development of cutting-edge software applications, designing application architecture, managing
+                        project timelines, and coordinating tasks with junior developers.
+                    </p>
+                    <p>
+                        I also used to lead a team at SELISE, where we worked on the Signature product that provides
+                        e-signature solutions to Swiss, German, Bhutan, and BD clients. I also research and prototype
+                        new technologies and ideas to enhance the performance, feasibility, and maintainability of cloud
+                        applications.
+                    </p>
+                    <p>
+                        I graduated with a Bachelor of Science in Computer Science and Engineering from United
+                        International University in 2019 with a CGPA of 3.98/4.00, where I also worked as a teaching
+                        assistant for two courses. I have published two papers on IoT and machine learning for cardiac
+                        status prediction.
+                    </p>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="stat-number">5+</h3>
+                        <p class="stat-label">Years Experience</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="stat-number">15+</h3>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="stat-number">13+</h3>
+                        <p class="stat-label">Certifications</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="stat-number">2</h3>
+                        <p class="stat-label">Publications</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications">
+                <h3 class="subsection-title">Certifications</h3>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Getting Started with Google Kubernetes Engine</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Front-end JavaScript Frameworks: Angular</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Server-side Development with NodeJS, Express and MongoDB</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cloud Computing Basics (Cloud 101)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Docker Mastery: with Kubernetes + Swarm</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Kubernetes for the Absolute Beginners</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>The Complete Flutter Development Bootcamp</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Complete SQL Bootcamp</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publications -->
+            <div class="publications">
+                <h3 class="subsection-title">Research Publications</h3>
+                <div class="publication-list">
+                    <div class="publication-card">
+                        <div class="pub-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <div class="pub-content">
+                            <h4>Cardiac Disease Predictor: An IoT and ML-driven health care system</h4>
+                            <p>A prototype demonstrating a mechanism for identifying patients with cardiac disease using
+                                IoT sensors and Machine Learning models to classify patients based on collected data
+                                including Heart BPM, Cholesterol, and ECG readings.</p>
+                        </div>
+                    </div>
+                    <div class="publication-card">
+                        <div class="pub-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="pub-content">
+                            <h4>Towards IoT and ML Driven Cardiac Status Prediction System</h4>
+                            <p>An IoT and Machine Learning-based method for predicting cardiac status by collecting
+                                essential data from the human body using IoT devices and applying ML algorithms to
+                                calculate and predict the overall condition of a patient's heart.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">My Journey</span>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- BRAC IT -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nov 2024 - Present</div>
+                        <h3 class="timeline-title">Senior Software Engineer</h3>
+                        <h4 class="timeline-company">BRAC IT Services Limited</h4>
+                        <ul class="timeline-description">
+                            <li>Working on cutting-edge software applications</li>
+                            <li>Part of the development team of one of the largest ERP solutions in the country</li>
+                            <li>Managing project timelines and coordinating tasks with developers</li>
+                            <li>Creating better application architecture and breaking down problems for developers</li>
+                            <li>Communicating with stakeholders, managers, and architects for successful project
+                                delivery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SELISE - Senior/Deputy Manager -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nov 2023 - Jan 2025 · 1.3 yrs</div>
+                        <h3 class="timeline-title">Senior Software Engineer / Deputy Engineering Manager</h3>
+                        <h4 class="timeline-company">SELISE Digital Platforms</h4>
+                        <ul class="timeline-description">
+                            <li>Lead a team of software engineers to deliver high-quality, performant, and sustainable
+                                software solutions</li>
+                            <li>Set technical direction and define engineering best practices</li>
+                            <li>Manage project timelines, priorities, and resources effectively</li>
+                            <li>Collaborate with product management and stakeholders to define project requirements</li>
+                            <li>Provide regular feedback and performance evaluations to team members</li>
+                            <li>Ensure adherence to coding standards, security guidelines, and best practices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SELISE - Software Engineer -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nov 2019 - Nov 2023 · 4 yrs</div>
+                        <h3 class="timeline-title">Software Engineer</h3>
+                        <h4 class="timeline-company">SELISE Digital Platforms</h4>
+                        <ul class="timeline-description">
+                            <li>Developing microservices in .NET Core framework with CQRS architecture pattern and
+                                Domain Driven Design</li>
+                            <li>Research new technology and ideas to provide Proof of Concept</li>
+                            <li>Ensuring multi-platform compatibility from scratch to deployment on Docker and
+                                Kubernetes cluster</li>
+                            <li>Providing continuous support, development, enhancement, and maintenance of core
+                                microservices</li>
+                            <li>Working on enhancement, support, and new features of SELISE App</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- UIU - Teaching Assistant -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 2019 - Nov 2019 · 3 months</div>
+                        <h3 class="timeline-title">Teaching Assistant</h3>
+                        <h4 class="timeline-company">United International University</h4>
+                        <ul class="timeline-description">
+                            <li>Helping conduct classes throughout the whole semester</li>
+                            <li>Grading classwork and homework of students</li>
+                            <li>Providing consultancy and individual monitoring during class time</li>
+                            <li>Supporting students with Computer Graphics and Structured Programming Language courses
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- UIU - Undergraduate Assistant -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Feb 2018 - Aug 2019 · 1 yr 7 months</div>
+                        <h3 class="timeline-title">Undergraduate Assistant</h3>
+                        <h4 class="timeline-company">United International University</h4>
+                        <ul class="timeline-description">
+                            <li>Teaching assistant for Data Structure, Software Engineering, Database Management System
+                            </li>
+                            <li>Helping students understand basic concepts of respective subjects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">My Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- SELISE Signature -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-signature"></i>
+                        </div>
+                        <h3 class="project-title">SELISE Signature</h3>
+                    </div>
+                    <p class="project-description">
+                        E-signature solution providing digital signing services to clients in Switzerland, Germany,
+                        Bhutan, and Bangladesh. Built with .NET microservices architecture.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">.NET</span>
+                        <span class="tag">CQRS</span>
+                        <span class="tag">Microservices</span>
+                    </div>
+                </div>
+
+                <!-- Examr -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="project-title">Examr - Online Exams</h3>
+                    </div>
+                    <p class="project-description">
+                        Effortlessly schedule exams, participate in them, review submitted questions post-exam, and
+                        monitor performance on the scoreboard. Automated exam commencement and conclusion with full
+                        admin control.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Multi-tenant</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.examr.xyz" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MinimalFramework -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="project-title">MinimalFramework</h3>
+                    </div>
+                    <p class="project-description">
+                        Application platform as a service solution written in .NET 6. Features MassTransit Bus with
+                        RabbitMQ, OpenTelemetry, Mediator pattern for CQRS, Serilog with SEQ, Zipkin tracing, and
+                        Prometheus metrics.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">.NET 6</span>
+                        <span class="tag">MassTransit</span>
+                        <span class="tag">OpenTelemetry</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ittahad/MinimalFramework" target="_blank" rel="noopener noreferrer"
+                            class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MEDexam -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3 class="project-title">MEDexam</h3>
+                    </div>
+                    <p class="project-description">
+                        Web application built with Flutter for taking online exams with MCQ-type questions. Built with
+                        custom Node.js multitenant application framework with adaptive design for web and mobile.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://medexam-portal.web.app" target="_blank" rel="noopener noreferrer"
+                            class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ACP -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="project-title">Application Cloud Platform (ACP)</h3>
+                    </div>
+                    <p class="project-description">
+                        aPaaS solution - a cluster of microservices working as building blocks for developing new web
+                        applications. Features inherent authentication, access control, storage, caching, and
+                        multi-tenancy.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Microservices</span>
+                        <span class="tag">Multi-tenant</span>
+                        <span class="tag">Cloud</span>
+                    </div>
+                </div>
+
+                <!-- Online Business Management -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="project-title">Online Business Management</h3>
+                    </div>
+                    <p class="project-description">
+                        Cloud-based online shop management application with multi-tenant architecture. Uses ACP identity
+                        service for authentication, storage for images, and Redis for caching.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">MEAN Stack</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://manageshop.web.app" target="_blank" rel="noopener noreferrer"
+                            class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dhaka Routes -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <h3 class="project-title">Dhaka Routes and Alerts</h3>
+                    </div>
+                    <p class="project-description">
+                        Mobile app providing information on bus and leguna services in Dhaka. Features route search,
+                        nearest stop locator, real-time traffic integration, and road alerts.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Mobile</span>
+                        <span class="tag">Maps API</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                </div>
+
+                <!-- WeatherDelight -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <h3 class="project-title">WeatherDelight</h3>
+                    </div>
+                    <p class="project-description">
+                        Weather application utilizing free API to gather weather data using users' coordinates. Features
+                        3-hour interval forecasts, UV index levels, and weather condition layers on maps.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">API Integration</span>
+                        <span class="tag">Maps</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Knowledge Sharing</span>
+                <h2 class="section-title">Articles & Writings</h2>
+                <p class="section-subtitle">Visit my <a
+                        href="https://www.linkedin.com/in/ittahad/recent-activity/articles/" target="_blank"
+                        rel="noopener noreferrer">LinkedIn profile</a> to check out all the latest writings</p>
+            </div>
+
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="article-title">Implementing Saga pattern in your .NET project using RabbitMQ and MongoDB
+                    </h3>
+                    <p class="article-excerpt">
+                        In a microservices architecture, multiple moving parts operate independently of each other
+                        within their processing contexts. Any failure within the process across distributed applications
+                        cannot be handled with a simple database transaction.
+                    </p>
+                    <a href="https://www.linkedin.com/pulse/implementing-saga-pattern-your-net-project-using-rabbitmq-akash-4gfbc/"
+                        target="_blank" rel="noopener noreferrer" class="article-link">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="article-title">Generic Command Processing pipeline in .NET using MassTransit</h3>
+                    <p class="article-excerpt">
+                        CQRS stands for Command Query Responsibility Segregation, and it gives your application an
+                        advantage by separating the write models from the read models. Which lets you scale your
+                        application independently.
+                    </p>
+                    <a href="https://www.linkedin.com/pulse/generic-command-processing-pipeline-net-using-ittahad-uz-zaman-akash-o56rc/"
+                        target="_blank" rel="noopener noreferrer" class="article-link">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="article-title">OpenTelemetry Tracing in .NET</h3>
+                    <p class="article-excerpt">
+                        OpenTelemetry is a project managed by CNCF. Before OpenTelemetry there stood two projects:
+                        OpenTracing and OpenCensus. Learn how to implement distributed tracing in your .NET
+                        applications.
+                    </p>
+                    <a href="https://www.linkedin.com/pulse/opentelemetry-tracing-net-ittahad-uz-zaman-akash/"
+                        target="_blank" rel="noopener noreferrer" class="article-link">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="article-title">CI/CD using GitHub Actions X DigitalOcean droplets</h3>
+                    <p class="article-excerpt">
+                        In this article, I want to discuss how I created an automated CI/CD pipeline using GitHub
+                        actions and Digital Ocean droplets (VM). GitHub actions is a quite useful tool when it comes to
+                        integrating CI/CD processes.
+                    </p>
+                    <a href="https://www.linkedin.com/pulse/cicd-using-github-actions-x-digitalocean-droplets-akash-w7l3c/"
+                        target="_blank" rel="noopener noreferrer" class="article-link">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="article-title">Build loosely coupled microservices in .NET</h3>
+                    <p class="article-excerpt">
+                        Loosely coupled microservices mean that when one microservice fails, it will not impact another
+                        running microservice. Besides, you get to scale each microservice accordingly, as per your
+                        business requirements.
+                    </p>
+                    <a href="https://www.linkedin.com/pulse/build-loosely-coupled-microservices-net-ittahad-uz-zaman-akash/"
+                        target="_blank" rel="noopener noreferrer" class="article-link">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="article-title">Multi-tenant application architecture with Node.js - Express, and Mongoose
+                    </h3>
+                    <p class="article-excerpt">
+                        Recently, I have been working with node.js applications for which I had to create a multi-tenant
+                        environment. Learn how to build scalable multi-tenant applications.
+                    </p>
+                    <a href="https://www.linkedin.com/pulse/multi-tenant-application-architecture-nodejs-express-akash/"
+                        target="_blank" rel="noopener noreferrer" class="article-link">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Source Section -->
+    <section id="opensource" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Contributing to the Community</span>
+                <h2 class="section-title">Open Source Projects</h2>
+                <p class="section-subtitle">
+                    The following Node.js services are designed with multi-tenant application architecture in mind.
+                    Identity and Amqp services have their separate npm packages which can be installed in other Node.js
+                    applications.
+                </p>
+            </div>
+
+            <div class="opensource-grid">
+                <a href="https://github.com/ittahad/node-identity" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>node-identity</h3>
+                    </div>
+                    <p>Identity service for multi-tenant Node.js applications with authentication and access control</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> Node.js</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/node-amqp" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>node-amqp</h3>
+                    </div>
+                    <p>AMQP service for distributed event-driven applications using RabbitMQ</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> Node.js</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/MinimalFramework" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>MinimalFramework</h3>
+                    </div>
+                    <p>Application platform as a service solution in .NET 6 with MassTransit, OpenTelemetry, and more
+                    </p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> C#</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/node-mailer" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>node-mailer</h3>
+                    </div>
+                    <p>Mail service for sending emails in multi-tenant applications</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> Node.js</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/node-storage" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>node-storage</h3>
+                    </div>
+                    <p>Storage service for managing files in cloud-based applications</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> Node.js</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/rabbitMqAndOutbox" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>rabbitMqAndOutbox</h3>
+                    </div>
+                    <p>Implementation of outbox pattern with RabbitMQ for reliable messaging</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> C#</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/algo_sort" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>algo_sort</h3>
+                    </div>
+                    <p>Sorting algorithm visualizer for educational purposes</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> JavaScript</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ittahad/BDLocations" target="_blank" rel="noopener noreferrer"
+                    class="repo-card">
+                    <div class="repo-header">
+                        <i class="fab fa-github"></i>
+                        <h3>BDLocations</h3>
+                    </div>
+                    <p>SQL file containing all Division, District, Thana, and Post codes of Bangladesh</p>
+                    <div class="repo-footer">
+                        <span class="repo-lang"><i class="fas fa-circle"></i> SQL</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="github-cta">
+                <a href="https://github.com/ittahad?tab=repositories" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary">
+                    <i class="fab fa-github"></i>
+                    <span>View All Repositories</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-subtitle">Feel free to reach out for collaborations, opportunities, or just a friendly
+                    chat!</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <a href="mailto:contact@ittahad.site">contact@ittahad.site</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/ittahad" target="_blank"
+                            rel="noopener noreferrer">linkedin.com/in/ittahad</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/ittahad" target="_blank"
+                            rel="noopener noreferrer">github.com/ittahad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Ittahad Uz Zaman. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/ittahad" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/ittahad" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:contact@ittahad.site">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
