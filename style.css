@@ -9,18 +9,18 @@
     --color-text-primary: #ffffff;
     --color-text-secondary: #b4b9d6;
     --color-text-muted: #7a7f9d;
-    
+
     /* Accent Colors */
     --color-accent-cyan: #00d9ff;
     --color-accent-purple: #a855f7;
     --color-accent-pink: #ec4899;
     --color-accent-blue: #3b82f6;
-    
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
     --gradient-secondary: linear-gradient(135deg, var(--color-accent-purple) 0%, var(--color-accent-pink) 100%);
     --gradient-accent: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-cyan) 100%);
-    
+
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -29,11 +29,11 @@
     --spacing-xl: 3rem;
     --spacing-2xl: 4rem;
     --spacing-3xl: 6rem;
-    
+
     /* Typography */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-heading: 'Space Grotesk', var(--font-primary);
-    
+
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -44,24 +44,24 @@
     --font-size-4xl: 2.5rem;
     --font-size-5xl: 3rem;
     --font-size-6xl: 4rem;
-    
+
     /* Shadows */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
     --shadow-glow: 0 0 40px rgba(0, 217, 255, 0.3);
-    
+
     /* Border Radius */
     --radius-sm: 0.5rem;
     --radius-md: 1rem;
     --radius-lg: 1.5rem;
     --radius-full: 9999px;
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-base: 300ms ease;
     --transition-slow: 500ms ease;
-    
+
     /* Z-index */
     --z-navbar: 1000;
     --z-modal: 2000;
@@ -75,7 +75,7 @@
     --color-text-primary: #1a1a1a;
     --color-text-secondary: #4a5568;
     --color-text-muted: #718096;
-    
+
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
@@ -84,7 +84,8 @@
 
 /* ===================================
    Reset & Base Styles
-   =================================== */* {
+   =================================== */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -161,6 +162,13 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
 }
 
 .nav-logo {
@@ -236,7 +244,7 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: var(--spacing-3xl) var(--spacing-lg);
+    padding: var(--spacing-3xl) var(--spacing-lg) calc(var(--spacing-3xl) + 80px);
 }
 
 .hero-background {
@@ -303,6 +311,8 @@ img {
     z-index: 1;
     max-width: 900px;
     text-align: center;
+    margin-top: 40px;
+    /* Increased margin for top spacing */
 }
 
 .hero-greeting {
@@ -412,6 +422,20 @@ img {
     color: var(--color-text-muted);
     font-size: var(--font-size-sm);
     animation: fadeIn 1s ease 1.2s backwards;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px),
+(min-height: 800px) and (max-width: 768px) {
+    .scroll-indicator {
+        display: none;
+    }
 }
 
 .mouse {
@@ -453,13 +477,13 @@ img {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     border-radius: var(--radius-full);
     border: none;
     cursor: pointer;
-    transition: all var(--transition-base);
+    transition: all var(--transition-fast);
     position: relative;
     overflow: hidden;
 }
@@ -1125,7 +1149,41 @@ img {
     gap: var(--spacing-md);
 }
 
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
 .footer-content p {
+    color: var(--color-text-muted);
+}
+
+.visitor-counter {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(0, 217, 255, 0.1);
+    border-radius: var(--radius-full);
+    width: fit-content;
+}
+
+.visitor-counter i {
+    color: var(--color-accent-cyan);
+    font-size: var(--font-size-base);
+}
+
+#visitor-count {
+    font-weight: 600;
+    color: var(--color-accent-cyan);
+    min-width: 40px;
+    text-align: center;
+}
+
+.visitor-label {
     color: var(--color-text-muted);
 }
 
@@ -1209,6 +1267,10 @@ img {
         transform: translateX(0);
     }
 
+    .nav-actions {
+        gap: var(--spacing-sm);
+    }
+
     .nav-toggle {
         display: flex;
     }
@@ -1227,12 +1289,9 @@ img {
 
     .hero {
         min-height: 90vh;
-        padding: var(--spacing-2xl) var(--spacing-md);
-    }
-
-    /* Hide scroll indicator on mobile to prevent overlap */
-    .scroll-indicator {
-        display: none;
+        padding: var(--spacing-2xl) var(--spacing-md) calc(var(--spacing-2xl) + 60px);
+        margin-top: 60px;
+        /* Additional margin-top for mobile */
     }
 
     .hero-cta {
@@ -1288,16 +1347,19 @@ img {
         flex-direction: column;
         text-align: center;
     }
+
+    .footer-left {
+        align-items: center;
+    }
 }
+
 /* ===================================
    Theme Toggle Button
    =================================== */
 .theme-toggle {
-    position: fixed;
-    top: 90px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
+    position: relative;
+    width: 44px;
+    height: 44px;
     border-radius: var(--radius-full);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1305,31 +1367,42 @@ img {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: calc(var(--z-navbar) - 1);
-    transition: all var(--transition-base);
-    font-size: var(--font-size-xl);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: var(--font-size-lg);
 }
 
 .theme-toggle:hover {
-    background: var(--gradient-primary);
-    transform: translateY(-3px) rotate(15deg);
-    box-shadow: var(--shadow-glow);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-accent-cyan);
+    transform: scale(1.05);
 }
 
 .theme-toggle .sun-icon,
 .theme-toggle .moon-icon {
     position: absolute;
-    transition: all var(--transition-base);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-toggle .sun-icon {
     opacity: 0;
-    transform: rotate(90deg) scale(0);
+    transform: rotate(180deg) scale(0);
+    color: #fbbf24;
 }
 
 .theme-toggle .moon-icon {
     opacity: 1;
     transform: rotate(0deg) scale(1);
+    color: var(--color-accent-cyan);
+}
+
+[data-theme="light"] .theme-toggle {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: var(--color-accent-cyan);
 }
 
 [data-theme="light"] .theme-toggle .sun-icon {
@@ -1339,7 +1412,7 @@ img {
 
 [data-theme="light"] .theme-toggle .moon-icon {
     opacity: 0;
-    transform: rotate(-90deg) scale(0);
+    transform: rotate(-180deg) scale(0);
 }
 
 /* Light mode navbar adjustments */
@@ -1415,9 +1488,19 @@ img {
 }
 
 /* Smooth theme transition */
+:root {
+    transition: --color-bg-primary 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        --color-bg-secondary 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        --color-bg-tertiary 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        --color-text-primary 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        --color-text-secondary 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        --color-text-muted 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body,
 #navbar,
 .section,
+.section-dark,
 .stat-card,
 .cert-item,
 .publication-card,
@@ -1425,8 +1508,16 @@ body,
 .project-card,
 .article-card,
 .repo-card,
-.contact-card {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+.contact-card,
+.social-link,
+.btn-secondary,
+.nav-link,
+.footer,
+.footer-social a,
+.theme-toggle {
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s ease;
 }
-
-

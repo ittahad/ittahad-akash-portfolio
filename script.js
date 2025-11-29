@@ -36,14 +36,19 @@ themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    document.documentElement.setAttribute('data-theme', newTheme);
-    setCookie('theme', newTheme, 365); // Save for 1 year
+    // Add smooth rotation animation
+    themeToggle.style.transform = 'rotate(360deg) scale(1.1)';
 
-    // Add a fun rotation animation
-    themeToggle.style.transform = 'rotate(360deg)';
+    // Trigger theme change after a brief delay for visual feedback
+    setTimeout(() => {
+        document.documentElement.setAttribute('data-theme', newTheme);
+        setCookie('theme', newTheme, 365); // Save for 1 year
+    }, 150);
+
+    // Reset animation
     setTimeout(() => {
         themeToggle.style.transform = '';
-    }, 300);
+    }, 600);
 });
 
 // Initialize theme on page load
@@ -146,7 +151,8 @@ const texts = [
     '.NET Microservices Expert',
     'Cloud Architecture Specialist',
     'CQRS & DDD Enthusiast',
-    'Tech Lead & Mentor'
+    'Tech Lead & Mentor',
+    'Youtube Creator'
 ];
 
 let textIndex = 0;
@@ -190,6 +196,9 @@ setTimeout(type, 1000);
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.stat-card, .cert-item, .publication-card, .timeline-item, .project-card, .article-card, .repo-card, .contact-card');
 
+    // Use different settings for mobile vs desktop
+    const isMobile = window.innerWidth <= 768;
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -201,8 +210,8 @@ const animateOnScroll = () => {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: isMobile ? 0.05 : 0.1,
+        rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
     });
 
     elements.forEach(element => {
@@ -448,6 +457,88 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// ===================================
+// Firebase Visitor Counter
+// ===================================
+
+// Firebase configuration - You need to replace these with your actual Firebase config
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+// Initialize Firebase
+try {
+    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+        initVisitorCounter();
+    } else {
+        console.log('Firebase not loaded or already initialized');
+        // Show fallback if Firebase is not available
+        document.getElementById('visitor-count').textContent = '---';
+    }
+} catch (error) {
+    console.error('Firebase initialization error:', error);
+    document.getElementById('visitor-count').textContent = '---';
+}
+
+function initVisitorCounter() {
+    const database = firebase.database();
+    const visitorRef = database.ref('visitors');
+
+    // Check if user has visited before using sessionStorage
+    const hasVisitedThisSession = sessionStorage.getItem('hasVisited');
+
+    if (!hasVisitedThisSession) {
+        // Increment visitor count
+        visitorRef.transaction((currentCount) => {
+            return (currentCount || 0) + 1;
+        }).then((result) => {
+            if (result.committed) {
+                updateVisitorDisplay(result.snapshot.val());
+                // Mark as visited in this session
+                sessionStorage.setItem('hasVisited', 'true');
+            }
+        }).catch((error) => {
+            console.error('Transaction failed:', error);
+            document.getElementById('visitor-count').textContent = '---';
+        });
+    } else {
+        // Just read the current count
+        visitorRef.once('value').then((snapshot) => {
+            updateVisitorDisplay(snapshot.val() || 0);
+        }).catch((error) => {
+            console.error('Error reading visitor count:', error);
+            document.getElementById('visitor-count').textContent = '---';
+        });
+    }
+}
+
+function updateVisitorDisplay(count) {
+    const visitorCountElement = document.getElementById('visitor-count');
+
+    // Animate the count
+    const duration = 1000;
+    const steps = 30;
+    const increment = count / steps;
+    let currentCount = 0;
+
+    const timer = setInterval(() => {
+        currentCount += increment;
+        if (currentCount >= count) {
+            visitorCountElement.textContent = count.toLocaleString();
+            clearInterval(timer);
+        } else {
+            visitorCountElement.textContent = Math.floor(currentCount).toLocaleString();
+        }
+    }, duration / steps);
 }
 
 // ===================================
