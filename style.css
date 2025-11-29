@@ -1353,6 +1353,25 @@ img {
     }
 }
 
+@media (max-width: 344px) {
+    .section {
+        padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+        margin: 0 auto;
+    }
+
+    .about-stats, .cert-grid, .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text, .timeline-content, .project-card {
+        font-size: var(--font-size-sm);
+    }
+
+    .section-header, .hero-content {
+        margin: 0;
+    }
+}
+
 /* ===================================
    Theme Toggle Button
    =================================== */
