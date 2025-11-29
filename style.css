@@ -1554,3 +1554,22 @@ body,
         padding-left: var(--spacing-md);
     }
 }
+
+@media (max-width: 749px) {
+    .section {
+        padding: var(--spacing-xl) var(--spacing-md);
+        margin: 0 auto;
+    }
+
+    .about-stats, .cert-grid, .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text, .timeline-content, .project-card {
+        font-size: var(--font-size-base);
+    }
+
+    .section-header, .hero-content {
+        margin: 0;
+    }
+}

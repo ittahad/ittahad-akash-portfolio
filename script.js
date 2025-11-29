@@ -199,6 +199,15 @@ const animateOnScroll = () => {
     // Use different settings for mobile vs desktop
     const isMobile = window.innerWidth <= 768;
 
+    if (isMobile) {
+        elements.forEach(element => {
+            element.style.opacity = '1';
+            element.style.transform = 'none';
+            element.style.transition = 'none';
+        });
+        return;
+    }
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -210,8 +219,8 @@ const animateOnScroll = () => {
             }
         });
     }, {
-        threshold: isMobile ? 0.05 : 0.1,
-        rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
     });
 
     elements.forEach(element => {
@@ -231,6 +240,15 @@ animateOnScroll();
 
 const init3DTransitions = () => {
     const sections = document.querySelectorAll('.section');
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        sections.forEach(section => {
+            section.classList.remove('section-3d-enter');
+            section.classList.add('section-3d-active');
+        });
+        return;
+    }
 
     const observer3D = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
