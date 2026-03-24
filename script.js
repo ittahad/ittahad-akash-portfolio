@@ -32,24 +32,23 @@ function initializeTheme() {
 // Theme toggle functionality
 const themeToggle = document.getElementById('theme-toggle');
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    // Add smooth rotation animation
-    themeToggle.style.transform = 'rotate(360deg) scale(1.1)';
+        themeToggle.style.transform = 'rotate(360deg) scale(1.1)';
 
-    // Trigger theme change after a brief delay for visual feedback
-    setTimeout(() => {
-        document.documentElement.setAttribute('data-theme', newTheme);
-        setCookie('theme', newTheme, 365); // Save for 1 year
-    }, 150);
+        setTimeout(() => {
+            document.documentElement.setAttribute('data-theme', newTheme);
+            setCookie('theme', newTheme, 365);
+        }, 150);
 
-    // Reset animation
-    setTimeout(() => {
-        themeToggle.style.transform = '';
-    }, 600);
-});
+        setTimeout(() => {
+            themeToggle.style.transform = '';
+        }, 600);
+    });
+}
 
 // Initialize theme on page load
 initializeTheme();
@@ -238,66 +237,10 @@ animateOnScroll();
 // 3D Section Transitions
 // ===================================
 
-const init3DTransitions = () => {
-    const sections = document.querySelectorAll('.section');
-    const isMobile = window.innerWidth <= 768;
+// Section entrance handled in CSS; keep hook for future use
+const init3DTransitions = () => {};
 
-    if (isMobile) {
-        sections.forEach(section => {
-            section.classList.remove('section-3d-enter');
-            section.classList.add('section-3d-active');
-        });
-        return;
-    }
-
-    const observer3D = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.remove('section-3d-enter');
-                entry.target.classList.add('section-3d-active');
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -100px 0px'
-    });
-
-    sections.forEach(section => {
-        section.classList.add('section-3d-enter');
-        observer3D.observe(section);
-    });
-};
-
-// Initialize 3D transitions
 init3DTransitions();
-
-// 3D Card Tilt Effect on Mouse Move
-const init3DCardEffects = () => {
-    const cards = document.querySelectorAll('.project-card, .article-card, .repo-card');
-
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-    });
-};
-
-// Initialize 3D card effects
-init3DCardEffects();
 
 // ===================================
 // Counter Animation for Stats
@@ -342,24 +285,7 @@ const animateCounters = () => {
 // Initialize counter animations
 animateCounters();
 
-// ===================================
-// Parallax Effect for Hero Orbs
-// ===================================
-
-const orbs = document.querySelectorAll('.gradient-orb');
-
-window.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-
-    orbs.forEach((orb, index) => {
-        const speed = (index + 1) * 20;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-
-        orb.style.transform = `translate(${x}px, ${y}px)`;
-    });
-});
+// Hero orbs: CSS handles motion so keyframes are not overridden by JS parallax
 
 // ===================================
 // Project Filtering (Optional Enhancement)
@@ -416,17 +342,17 @@ const createScrollToTop = () => {
         right: 30px;
         width: 50px;
         height: 50px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-        border: none;
+        border-radius: 8px;
+        background: #ff2d00;
+        border: 1px solid #ff2d00;
         color: white;
         font-size: 20px;
         cursor: pointer;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
-        z-index: 999;
-        box-shadow: 0 4px 16px rgba(0, 217, 255, 0.3);
+        z-index: 1200;
+        box-shadow: 0 12px 40px rgba(255, 45, 0, 0.35);
     `;
 
     document.body.appendChild(button);
@@ -578,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Easter Egg - Console Message
 // ===================================
 
-console.log('%c👋 Hello there!', 'font-size: 20px; font-weight: bold; color: #00d9ff;');
-console.log('%cLooking for something? Feel free to reach out!', 'font-size: 14px; color: #a855f7;');
-console.log('%c📧 contact@ittahad.site', 'font-size: 14px; color: #ec4899;');
-console.log('%c🔗 https://www.linkedin.com/in/ittahad', 'font-size: 14px; color: #3b82f6;');
+console.log('%cHello there', 'font-size: 18px; font-weight: bold; color: #ff2d00;');
+console.log('%cLooking for something? Reach out.', 'font-size: 13px; color: #9c9890;');
+console.log('%ccontact@ittahad.site', 'font-size: 13px; color: #f5f2eb;');
+console.log('%chttps://www.linkedin.com/in/ittahad', 'font-size: 13px; color: #ff2d00;');

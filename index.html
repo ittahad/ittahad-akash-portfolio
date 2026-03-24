@@ -3,7 +3,7 @@
 
 <head>
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/1739631426650.jpg" />
+    <link rel="icon" type="image/png" href="assets/1739631426650.png" />
 
     <!-- Metadata and other tags -->
     <meta charset="UTF-8">
@@ -21,11 +21,11 @@
 
     <title>Ittahad Uz Zaman - Senior Software Engineer</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts — editorial stack inspired by zarcerog.com -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -40,6 +40,8 @@
 </head>
 
 <body>
+    <div class="grain-layer" aria-hidden="true"></div>
+
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
 
@@ -47,6 +49,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
+                <span class="logo-mark" aria-hidden="true"></span>
                 <span class="logo-text">Akash</span>
             </a>
 
@@ -61,11 +64,11 @@
             </div>
 
             <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
                     <i class="fas fa-sun sun-icon"></i>
                     <i class="fas fa-moon moon-icon"></i>
                 </button>
-                <button class="nav-toggle" id="nav-toggle">
+                <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -76,7 +79,8 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background">
+        <div class="hero-background" aria-hidden="true">
+            <div class="hero-grid-lines"></div>
             <div class="gradient-orb orb-1"></div>
             <div class="gradient-orb orb-2"></div>
             <div class="gradient-orb orb-3"></div>
@@ -84,39 +88,56 @@
 
         <div class="hero-content">
             <div class="hero-text">
-                <p class="hero-greeting">Hi, I'm</p>
-                <h1 class="hero-name">Ittahad Uz Zaman</h1>
-                <div class="hero-title">
+                <p class="hero-greeting"><span class="hero-greeting-line"></span> Senior Software Engineer</p>
+                <h1 class="hero-name">
+                    <span class="hero-name-legal">Ittahad Uz Zaman</span>
+                    <span class="hero-name-alias">Akash</span>
+                </h1>
+                <div class="hero-title" aria-live="polite">
                     <span class="typing-text"></span>
-                    <span class="cursor">|</span>
+                    <span class="cursor" aria-hidden="true">|</span>
                 </div>
                 <p class="hero-description">
-                    Senior Software Engineer specializing in .NET microservices, CQRS architecture, and Cloud-native
-                    applications.
-                    Passionate about building scalable, Maintainable software solutions.
+                    .NET microservices, CQRS, and cloud-native systems — built for scale, clarity, and long-term
+                    maintainability.
                 </p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
+                        <span>View work</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="#contact" class="btn btn-secondary">
-                        <span>Get In Touch</span>
+                        <span>Contact</span>
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
                 <div class="hero-social">
                     <a href="https://www.linkedin.com/in/ittahad" target="_blank" rel="noopener noreferrer"
-                        class="social-link">
+                        class="social-link" aria-label="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/ittahad" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <a href="https://github.com/ittahad" target="_blank" rel="noopener noreferrer" class="social-link"
+                        aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="mailto:contact@ittahad.site" class="social-link">
+                    <a href="https://www.youtube.com/@ittahadakash" target="_blank" rel="noopener noreferrer"
+                        class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:contact@ittahad.site" class="social-link" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
+            </div>
+            <div class="hero-portrait">
+                <div class="hero-portrait-ring" aria-hidden="true"></div>
+                <div class="hero-portrait-frame">
+                    <img src="assets/1739631426650.png" alt="Portrait of Ittahad Uz Zaman" width="300" height="300"
+                        decoding="async" fetchpriority="high" />
+                </div>
+                <p class="hero-portrait-caption"><span>BRAC IT</span><span
+                        class="caption-sep">/</span><span>Ex-SELISE</span>
+                </p>
             </div>
         </div>
 
@@ -124,16 +145,46 @@
             <div class="mouse">
                 <div class="wheel"></div>
             </div>
-            <p>Scroll Down</p>
+            <p>Scroll</p>
         </div>
     </section>
+
+    <div class="marquee-strip" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>.NET</span><span class="marquee-sep">✦</span>
+                <span>CQRS</span><span class="marquee-sep">✦</span>
+                <span>Microservices</span><span class="marquee-sep">✦</span>
+                <span>Kubernetes</span><span class="marquee-sep">✦</span>
+                <span>OpenTelemetry</span><span class="marquee-sep">✦</span>
+                <span>Domain-Driven Design</span><span class="marquee-sep">✦</span>
+                <span>Cloud Architecture</span><span class="marquee-sep">✦</span>
+                <span>RabbitMQ</span><span class="marquee-sep">✦</span>
+                <span>Node.js</span><span class="marquee-sep">✦</span>
+            </div>
+            <div class="marquee-content">
+                <span>.NET</span><span class="marquee-sep">✦</span>
+                <span>CQRS</span><span class="marquee-sep">✦</span>
+                <span>Microservices</span><span class="marquee-sep">✦</span>
+                <span>Kubernetes</span><span class="marquee-sep">✦</span>
+                <span>OpenTelemetry</span><span class="marquee-sep">✦</span>
+                <span>Domain-Driven Design</span><span class="marquee-sep">✦</span>
+                <span>Cloud Architecture</span><span class="marquee-sep">✦</span>
+                <span>RabbitMQ</span><span class="marquee-sep">✦</span>
+                <span>Node.js</span><span class="marquee-sep">✦</span>
+            </div>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Get To Know Me</span>
-                <h2 class="section-title">About Me</h2>
+                <span class="section-index" aria-hidden="true">01</span>
+                <div class="section-heading-block">
+                    <span class="section-label">Get to know me</span>
+                    <h2 class="section-title">About</h2>
+                </div>
             </div>
 
             <div class="about-content">
@@ -264,8 +315,11 @@
     <section id="experience" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">My Journey</span>
-                <h2 class="section-title">Work Experience</h2>
+                <span class="section-index" aria-hidden="true">02</span>
+                <div class="section-heading-block">
+                    <span class="section-label">My journey</span>
+                    <h2 class="section-title">Experience</h2>
+                </div>
             </div>
 
             <div class="timeline">
@@ -365,8 +419,11 @@
     <section id="projects" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">My Work</span>
-                <h2 class="section-title">Featured Projects</h2>
+                <span class="section-index" aria-hidden="true">03</span>
+                <div class="section-heading-block">
+                    <span class="section-label">Selected work</span>
+                    <h2 class="section-title">Projects</h2>
+                </div>
             </div>
 
             <div class="projects-grid">
@@ -555,11 +612,14 @@
     <section id="articles" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Knowledge Sharing</span>
-                <h2 class="section-title">Articles & Writings</h2>
-                <p class="section-subtitle">Visit my <a
-                        href="https://www.linkedin.com/in/ittahad/recent-activity/articles/" target="_blank"
-                        rel="noopener noreferrer">LinkedIn profile</a> to check out all the latest writings</p>
+                <span class="section-index" aria-hidden="true">04</span>
+                <div class="section-heading-block">
+                    <span class="section-label">Knowledge sharing</span>
+                    <h2 class="section-title">Articles</h2>
+                    <p class="section-subtitle">Visit my <a
+                            href="https://www.linkedin.com/in/ittahad/recent-activity/articles/" target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a> for the full archive.</p>
+                </div>
             </div>
 
             <div class="articles-grid">
@@ -667,13 +727,14 @@
     <section id="opensource" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Contributing to the Community</span>
-                <h2 class="section-title">Open Source Projects</h2>
-                <p class="section-subtitle">
-                    The following Node.js services are designed with multi-tenant application architecture in mind.
-                    Identity and Amqp services have their separate npm packages which can be installed in other Node.js
-                    applications.
-                </p>
+                <span class="section-index" aria-hidden="true">05</span>
+                <div class="section-heading-block">
+                    <span class="section-label">Community</span>
+                    <h2 class="section-title">Open source</h2>
+                    <p class="section-subtitle">
+                        Multi-tenant Node services, reusable packages, and .NET platform tooling — built to ship.
+                    </p>
+                </div>
             </div>
 
             <div class="opensource-grid">
@@ -789,10 +850,12 @@
     <section id="contact" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Get In Touch</span>
-                <h2 class="section-title">Contact Me</h2>
-                <p class="section-subtitle">Feel free to reach out for collaborations, opportunities, or just a friendly
-                    chat!</p>
+                <span class="section-index" aria-hidden="true">06</span>
+                <div class="section-heading-block">
+                    <span class="section-label">Get in touch</span>
+                    <h2 class="section-title">Contact</h2>
+                    <p class="section-subtitle">Collaborations, roles, or a technical chat — I’m listening.</p>
+                </div>
             </div>
 
             <div class="contact-content">
@@ -822,6 +885,15 @@
                         <a href="https://github.com/ittahad" target="_blank"
                             rel="noopener noreferrer">github.com/ittahad</a>
                     </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3>YouTube</h3>
+                        <a href="https://www.youtube.com/@ittahadakash" target="_blank"
+                            rel="noopener noreferrer">youtube.com/@ittahadakash</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -832,12 +904,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-left">
-                    <p>&copy; 2025 Ittahad Uz Zaman. All rights reserved.</p>
-                    <div class="visitor-counter">
-                        <i class="fas fa-eye"></i>
-                        <span id="visitor-count">Loading...</span>
-                        <span class="visitor-label">visitors</span>
-                    </div>
+                    <p>&copy; 2026 Ittahad Uz Zaman. All rights reserved.</p>
+
                 </div>
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/in/ittahad" target="_blank" rel="noopener noreferrer">
@@ -845,6 +913,10 @@
                     </a>
                     <a href="https://github.com/ittahad" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ittahadakash" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
                     </a>
                     <a href="mailto:contact@ittahad.site">
                         <i class="fas fa-envelope"></i>
