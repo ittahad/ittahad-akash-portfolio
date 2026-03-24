@@ -41,6 +41,9 @@
     --z-grain: 900;
     --z-progress: 950;
     --z-nav: 1000;
+    --z-curtain: 9200;
+
+    --ease-curtain: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 [data-theme="light"] {
@@ -117,6 +120,77 @@ img {
 [data-theme="light"] .grain-layer {
     opacity: 0.035;
     mix-blend-mode: multiply;
+}
+
+/* ========== Page curtain (load + in-page “navigation”) ========== */
+.page-curtain {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-curtain);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.page-curtain.is-active {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.page-curtain__panel {
+    position: absolute;
+    inset: 0;
+    background: var(--color-accent);
+    transform: translateY(100%);
+    will-change: transform;
+    transition: transform 0.52s var(--ease-curtain);
+}
+
+/* Initial visit: cover then wipe up */
+body.has-page-intro .page-curtain {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.has-page-intro .page-curtain__panel {
+    transform: translateY(0);
+    transition: transform 0.65s var(--ease-curtain);
+}
+
+body.has-page-intro.is-intro-leaving .page-curtain__panel {
+    transform: translateY(-100%);
+}
+
+/* After intro: panel rests below viewport (set via JS class) */
+body.curtain-idle-bottom .page-curtain__panel {
+    transform: translateY(100%);
+    transition: none;
+}
+
+body.curtain-idle-bottom .page-curtain:not(.is-active) {
+    visibility: hidden;
+}
+
+/* Nav transition: sweep up to cover */
+.page-curtain.is-nav-cover .page-curtain__panel {
+    transform: translateY(0);
+    transition: transform 0.48s var(--ease-curtain);
+}
+
+/* Then sweep up off screen */
+.page-curtain.is-nav-reveal .page-curtain__panel {
+    transform: translateY(-100%);
+    transition: transform 0.48s var(--ease-curtain);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-curtain,
+    .page-curtain__panel {
+        transition-duration: 0.01ms !important;
+    }
+
+    body.has-page-intro .page-curtain__panel {
+        transform: translateY(-100%);
+    }
 }
 
 #scroll-progress {
@@ -207,7 +281,11 @@ img {
     color: var(--color-text-muted);
     padding: 0.35rem 0;
     position: relative;
-    transition: color 0.25s var(--ease-out);
+    transition: color 0.25s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.nav-link:active {
+    transform: scale(0.96);
 }
 
 .nav-link::after {
@@ -735,6 +813,10 @@ img {
     border: 1px solid transparent;
     cursor: pointer;
     transition: transform 0.3s var(--ease-out), box-shadow 0.3s, background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.97);
 }
 
 .btn-primary {
@@ -1507,6 +1589,68 @@ img {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+}
+
+/* ========== Scroll offset (fixed nav) ========== */
+.hero,
+.section,
+.marquee-strip {
+    scroll-margin-top: 96px;
+}
+
+/* ========== Section block reveals ========== */
+.js-section-reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    filter: blur(8px);
+    transition:
+        opacity 0.8s var(--ease-out),
+        transform 0.9s var(--ease-out),
+        filter 0.9s var(--ease-out);
+}
+
+.js-section-reveal.is-in-view {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+@media (max-width: 768px) {
+    .js-section-reveal {
+        filter: none;
+        transform: translateY(20px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js-section-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+}
+
+/* ========== Card / list scroll reveals ========== */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+    transition:
+        opacity 0.65s var(--ease-out),
+        transform 0.72s var(--ease-out);
+}
+
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 
 /* ========== Responsive ========== */

@@ -39,8 +39,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="has-page-intro">
+
     <div class="grain-layer" aria-hidden="true"></div>
+
+    <!-- Full-screen transitions (nav + load intro) -->
+    <div id="page-curtain" class="page-curtain" aria-hidden="true">
+        <div class="page-curtain__panel"></div>
+    </div>
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
