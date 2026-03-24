@@ -314,6 +314,7 @@ const texts = [
     'Cloud Architecture Specialist',
     'CQRS & DDD Enthusiast',
     'Tech Lead & Mentor',
+    'RAG & Full-Stack Products',
     'Youtube Creator'
 ];
 
