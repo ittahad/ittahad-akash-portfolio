@@ -106,6 +106,33 @@ function clearCurtainPageTitle() {
     pageCurtain?.classList.remove('is-typo-on', 'is-typo-pop');
 }
 
+/** Which section is “current” for the fixed nav underline (scroll-spy) */
+function getScrollSpySections() {
+    return document.querySelectorAll('.hero[id], .section[id]');
+}
+
+function updateActiveNavLink() {
+    const sections = getScrollSpySections();
+    if (!sections.length) return;
+
+    const trigger = window.scrollY + SCROLL_NAV_OFFSET + 20;
+    let currentId = sections[0].id;
+
+    sections.forEach((section) => {
+        const sectionTop = window.scrollY + section.getBoundingClientRect().top;
+        if (trigger >= sectionTop) {
+            currentId = section.id;
+        }
+    });
+
+    navLinks.forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            link.classList.toggle('active', href === `#${currentId}`);
+        }
+    });
+}
+
 // Mobile menu toggle
 if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
@@ -140,32 +167,13 @@ window.addEventListener('scroll', () => {
     if (scrollProgress) scrollProgress.style.width = scrolled + '%';
 
     lastScroll = currentScroll;
+    updateActiveNavLink();
 });
 
-// Active nav link on scroll
-const sections = document.querySelectorAll('.section, .hero');
-const observerOptions = {
-    threshold: 0.3,
-    rootMargin: '-100px'
-};
-
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}, observerOptions);
-
-sections.forEach(section => {
-    navObserver.observe(section);
-});
+window.addEventListener('resize', updateActiveNavLink, { passive: true });
+window.addEventListener('hashchange', updateActiveNavLink);
+window.addEventListener('load', updateActiveNavLink);
+updateActiveNavLink();
 
 // ===================================
 // Page curtain + in-page navigation
