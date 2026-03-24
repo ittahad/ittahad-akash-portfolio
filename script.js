@@ -64,12 +64,47 @@ const navLinks = document.querySelectorAll('.nav-link');
 const scrollProgress = document.getElementById('scroll-progress');
 const pageCurtain = document.getElementById('page-curtain');
 const pageCurtainPanel = pageCurtain?.querySelector('.page-curtain__panel');
+const pageCurtainLabel = document.getElementById('page-curtain-label');
 
 const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const SCROLL_NAV_OFFSET = 88;
 const CURTAIN_MS = 520;
+
+/** Shown on the red curtain while it covers the screen (edit labels here) */
+const SECTION_PAGE_TITLE = {
+    home: 'HOME',
+    about: 'ABOUT',
+    experience: 'EXPERIENCE',
+    projects: 'PROJECTS',
+    articles: 'ARTICLES',
+    opensource: 'OPEN SOURCE',
+    contact: 'CONTACT'
+};
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function setCurtainPageTitle(sectionId) {
+    if (!pageCurtainLabel) return;
+    const raw =
+        SECTION_PAGE_TITLE[sectionId] ||
+        (sectionId && sectionId.replace(/-/g, ' ').toUpperCase()) ||
+        'NEXT';
+    const words = raw.trim().split(/\s+/).filter(Boolean);
+    pageCurtainLabel.innerHTML = words
+        .map((w) => `<span class="word">${escapeHtml(w)}</span>`)
+        .join('');
+}
+
+function clearCurtainPageTitle() {
+    if (pageCurtainLabel) pageCurtainLabel.innerHTML = '';
+    pageCurtain?.classList.remove('is-typo-on', 'is-typo-pop');
+}
 
 // Mobile menu toggle
 if (navToggle && navMenu) {
@@ -80,10 +115,10 @@ if (navToggle && navMenu) {
 }
 
 // Close mobile menu when clicking on a link
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+        navToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
     });
 });
 
@@ -102,7 +137,7 @@ window.addEventListener('scroll', () => {
     // Update scroll progress bar
     const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (currentScroll / windowHeight) * 100;
-    scrollProgress.style.width = scrolled + '%';
+    if (scrollProgress) scrollProgress.style.width = scrolled + '%';
 
     lastScroll = currentScroll;
 });
@@ -156,11 +191,24 @@ function runNavCurtain(targetEl, doneCallback) {
         return;
     }
 
+    const sectionId = targetEl.id || '';
+
+    clearCurtainPageTitle();
+    setCurtainPageTitle(sectionId);
+    pageCurtain.classList.add('is-typo-on');
+
     removeCurtainIdle();
     pageCurtain.classList.add('is-active', 'is-nav-cover');
 
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            pageCurtain.classList.add('is-typo-pop');
+        });
+    });
+
     window.setTimeout(() => {
         scrollToTargetInstant(targetEl);
+        clearCurtainPageTitle();
         pageCurtain.classList.remove('is-nav-cover');
         pageCurtain.classList.add('is-nav-reveal');
         window.setTimeout(() => {
