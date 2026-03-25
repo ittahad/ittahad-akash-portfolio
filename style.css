@@ -617,12 +617,12 @@ body.curtain-idle-bottom .page-curtain:not(.is-active) {
 .hero-name-legal {
     display: block;
     font-family: var(--font-body);
-    font-size: clamp(1.05rem, 2.8vw, 1.5rem);
+    font-size: clamp(1.15rem, 3vw, 1.7rem);
     font-weight: 600;
     line-height: 1.2;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: none;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
 }
 
 .hero-name-alias {
