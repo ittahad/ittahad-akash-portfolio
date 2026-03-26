@@ -103,7 +103,43 @@ function setCurtainPageTitle(sectionId) {
 
 function clearCurtainPageTitle() {
     if (pageCurtainLabel) pageCurtainLabel.innerHTML = '';
-    pageCurtain?.classList.remove('is-typo-on', 'is-typo-pop');
+    pageCurtain?.classList.remove('is-typo-on', 'is-typo-pop', 'is-typo-morph');
+    pageCurtain?.style.removeProperty('--morph-x');
+    pageCurtain?.style.removeProperty('--morph-y');
+    pageCurtain?.style.removeProperty('--morph-scale');
+}
+
+function getCurtainMorphTarget(targetEl) {
+    if (!targetEl) return null;
+    if (targetEl.id === 'home') {
+        return document.querySelector('.hero-name-alias');
+    }
+    return targetEl.querySelector('.section-title');
+}
+
+function primeCurtainMorphToTarget(targetEl) {
+    if (!pageCurtain || !pageCurtainLabel) return false;
+    const morphTarget = getCurtainMorphTarget(targetEl);
+    if (!morphTarget) return false;
+
+    const labelRect = pageCurtainLabel.getBoundingClientRect();
+    const targetRect = morphTarget.getBoundingClientRect();
+    if (!labelRect.width || !labelRect.height || !targetRect.width || !targetRect.height) return false;
+
+    const labelCenterX = labelRect.left + labelRect.width / 2;
+    const labelCenterY = labelRect.top + labelRect.height / 2;
+    const targetCenterX = targetRect.left + targetRect.width / 2;
+    const targetCenterY = targetRect.top + targetRect.height / 2;
+
+    const dx = targetCenterX - labelCenterX;
+    const dy = targetCenterY - labelCenterY;
+    const rawScale = targetRect.width / labelRect.width;
+    const scale = Math.max(0.45, Math.min(1.15, rawScale));
+
+    pageCurtain.style.setProperty('--morph-x', `${dx.toFixed(2)}px`);
+    pageCurtain.style.setProperty('--morph-y', `${dy.toFixed(2)}px`);
+    pageCurtain.style.setProperty('--morph-scale', `${scale.toFixed(3)}`);
+    return true;
 }
 
 /** Which section is “current” for the fixed nav underline (scroll-spy) */
@@ -216,10 +252,14 @@ function runNavCurtain(targetEl, doneCallback) {
 
     window.setTimeout(() => {
         scrollToTargetInstant(targetEl);
-        clearCurtainPageTitle();
+        const canMorph = primeCurtainMorphToTarget(targetEl);
+        if (canMorph) {
+            pageCurtain.classList.add('is-typo-morph');
+        }
         pageCurtain.classList.remove('is-nav-cover');
         pageCurtain.classList.add('is-nav-reveal');
         window.setTimeout(() => {
+            clearCurtainPageTitle();
             pageCurtain.classList.remove('is-active', 'is-nav-reveal');
             settleCurtainAtBottom();
             doneCallback?.();

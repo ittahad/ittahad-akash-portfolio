@@ -208,6 +208,13 @@ body.curtain-idle-bottom .page-curtain:not(.is-active) {
     text-wrap: balance;
     max-width: 95vw;
     margin: 0;
+    transform: translate(0, 0) scale(1);
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+    transition:
+        transform 0.58s var(--ease-curtain),
+        opacity 0.48s var(--ease-out),
+        filter 0.48s var(--ease-out);
 }
 
 .page-curtain__label .word {
@@ -259,6 +266,14 @@ body.curtain-idle-bottom .page-curtain:not(.is-active) {
     transition-delay: 0.5s;
 }
 
+/* Morph curtain title toward destination section title while reveal starts */
+.page-curtain.is-typo-morph .page-curtain__label {
+    transform: translate(var(--morph-x, 0px), var(--morph-y, 0px))
+        scale(var(--morph-scale, 1));
+    opacity: 0.16;
+    filter: blur(1.4px);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .page-curtain,
     .page-curtain__panel {
@@ -275,6 +290,12 @@ body.curtain-idle-bottom .page-curtain:not(.is-active) {
         opacity: 1 !important;
         color: #fff !important;
         -webkit-text-stroke: 0 !important;
+    }
+
+    .page-curtain.is-typo-morph .page-curtain__label {
+        transform: none !important;
+        opacity: 0 !important;
+        filter: none !important;
     }
 }
 
