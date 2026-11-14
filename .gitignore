@@ -31,3 +31,9 @@ logs/
 .env
 .env.local
 .env.*.local
+
+# Impeccable review captures (8MB of screenshots; regenerate, don't commit)
+.impeccable/review/
+
+# Source photos: kept locally, never deployed or committed
+.private-photos/

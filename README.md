@@ -1,183 +1,120 @@
-# Modern Portfolio Website
+# Ittahad Uz Zaman — portfolio
 
-A stunning, modern portfolio website featuring dark theme, glassmorphism effects, vibrant gradients, and smooth animations.
+Single-page portfolio for a senior software engineer. Monochrome, typographic, and animated almost entirely with **CSS scroll-driven animation** — no animation library, no build step, no package manager.
 
-## 🚀 Quick Start
-
-### Local Development
+## Quick start
 
 ```bash
-# Serve locally
 npx serve .
 ```
 
-Visit `http://localhost:3000` to view the portfolio.
+Then open `http://localhost:3000`. There is nothing to compile; the three source files are the site.
 
-## 🔥 Firebase Deployment
+## How it is built
+
+| File | Role |
+|---|---|
+| `index.html` | The whole page. Semantic sections, anchor-navigated. |
+| `style.css` | Design tokens, components, and the motion library. |
+| `script.js` | Only what CSS cannot do: theme persistence, the typed status line, menu state, scroll-spy, the counter count-up, and the reveal fallback. |
+| `assets/` | Monogram favicon, app icon, and Open Graph preview image. |
+| `PRODUCT.md` | Durable product truth — what is real and what must never be invented. Not deployed. |
+| `DESIGN.md` | The shipped design system: tokens, type ramp, motion contract, and the do/don't rules. Not deployed. |
+| `.impeccable/` | Design direction contract and review screenshots. Not deployed. |
+
+### Dependencies
+
+One: **Google Fonts**. There is no icon font, no animation library, no framework, and no build step. Icons are a single inline `<svg class="sprite">` of seven `<symbol>`s referenced by `<use>` — brand marks filled (CC0, from Simple Icons), UI glyphs stroked at `1.75` on `currentColor`. Replacing Font Awesome with that sprite removed 273 KB across three render-blocking third-party requests, for seven glyphs.
+
+### Design system
+
+Everything is driven by custom properties at the top of `style.css`.
+
+- **Colour** — pure black ground (`#000`), panels `#111`, hairlines `#ffffff17`. **White is the only accent**; there is no second hue anywhere. Text steps down through alpha (`--ink` → `--ink-2` → `--ink-3`) rather than to grey, so it stays tinted to the surface. `--ink-4` is reserved for separator glyphs and never carries read text.
+- **Light theme** — an authored negative of the same system (`--bg: #f4f4f5`, black accent), not a tint. Defined under `:root[data-theme="light"]`.
+- **Type** — [Rethink Sans](https://fonts.google.com/specimen/Rethink+Sans) for display, body and labels; [Geist Mono](https://fonts.google.com/specimen/Geist+Mono) **only for data**: dates, counts, hostnames, repo names, tech tokens.
+- **Motion** — one easing curve, `cubic-bezier(.16, 1, .3, 1)`, everywhere.
+
+All text/background pairs meet WCAG AA in both themes (verified by composite against every surface, not by token inspection).
+
+### The motion library
+
+Reveals are **scroll-linked, not time-based**. A class like `.r-rise` resolves to:
+
+```css
+@supports (animation-timeline: view()) {
+    .r-rise {
+        animation: 1ms var(--ease) both k-rise;
+        animation-timeline: view();
+        animation-range: entry cover 30%;
+    }
+}
+```
+
+The element's position in the viewport *is* the animation's playhead. The library is `.r-rise`, `.r-rise-sm`, `.r-fall`, `.r-left`, `.r-right`, `.r-scale`, `.r-fade`, `.r-tilt` and `.r-blur`, plus `.r-stagger` / `.r-stagger-tight` on a parent to cascade its children, `.r-par-slow` / `.r-par-med` / `.r-zoom-out` for parallax, and `.r-early` / `.r-late` to shift the range. Not all of them are used in the current markup; they are the system, not a usage list.
+
+One named timeline and one registered property do the distinctive work, with no JavaScript at all:
+
+- **The hero hand-off** — `view-timeline: --hero` fades and lifts the hero on exit while its ambient layer drifts the other way.
+- **The hover edge** — a registered `@property --spin-angle` rotating a `conic-gradient` through a border mask.
+
+The counters are the exception: the number is real text in the markup and JavaScript animates it, because the CSS-only `counter()` approach rendered wrong values and generated content is not reliably announced by screen readers.
+
+**Degradation is layered, and content is visible by default at every layer:**
+
+1. Scroll-driven animation supported → everything above.
+2. Not supported (`@supports not`) → the same reveals as ordinary time-based transitions, triggered by an `IntersectionObserver` in `script.js`.
+3. `prefers-reduced-motion: reduce` → all animation off, counters at final value, typing effect static, marquee static.
+
+## Firebase deployment
 
 ### Prerequisites
 
-1. **Firebase Account**: Create a free account at [firebase.google.com](https://firebase.google.com)
-2. **Firebase Project**: Create a new project in the Firebase Console
-3. **Node.js**: Ensure Node.js is installed on your system
+- A Firebase project
+- Node.js (for the Firebase CLI)
 
-### Deployment Steps
-
-#### Option 1: Using PowerShell (Windows)
+### Deploy
 
 ```powershell
-# Run the deployment script
-./deploy.ps1
+./deploy.ps1     # Windows
 ```
 
-#### Option 2: Using Bash (Linux/Mac)
-
 ```bash
-# Make the script executable
-chmod +x deploy.sh
-
-# Run the deployment script
-./deploy.sh
+chmod +x deploy.sh && ./deploy.sh    # Linux / macOS
 ```
 
-#### Option 3: Manual Deployment
+Or manually:
 
 ```bash
-# Install Firebase CLI globally
 npm install -g firebase-tools
-
-# Login to Firebase
 firebase login
-
-# Initialize Firebase (first time only)
-firebase init hosting
-
-# Deploy to Firebase
 firebase deploy --only hosting
 ```
 
 ### Configuration
 
-Before deploying, update `.firebaserc` with your Firebase project ID:
+Set your project ID in `.firebaserc`, or run `firebase use --add`.
 
-```json
-{
-  "projects": {
-    "default": "your-actual-project-id"
-  }
-}
-```
+`firebase.json` serves the repo root and excludes `PRODUCT.md`, `.impeccable/`, the deploy scripts and this README from the upload. CSS/JS/images get a one-year cache; `index.html` is served `no-cache` so deploys take effect immediately.
 
-Or run:
-```bash
-firebase use --add
-```
+## Sections
 
-## 📁 Project Structure
+1. **Hero** — headline, live status line, primary action, credential strip
+2. **About** — bio, animated counters, certifications, publications
+3. **Experience** — five roles on a self-drawing timeline
+4. **Projects** — two featured, then a ruled index of seven
+5. **Writing** — six published articles
+6. **Open source** — eight public repositories
+7. **Contact** — the close; the email address is the largest thing on screen
 
-```
-modern-portfolio/
-├── index.html          # Main HTML file
-├── style.css           # Styles and design system
-├── script.js           # Interactive features
-├── firebase.json       # Firebase hosting configuration
-├── .firebaserc         # Firebase project settings
-├── deploy.ps1          # Windows deployment script
-├── deploy.sh           # Linux/Mac deployment script
-└── README.md           # This file
-```
+## Browser support
 
-## ✨ Features
+Scroll-driven animation needs Chrome/Edge 115+. Browsers without it take the `IntersectionObserver` path automatically — same content, same layout, simpler motion. Nothing is gated behind it.
 
-- 🎨 Modern dark theme with vibrant gradients
-- ✨ Glassmorphism effects
-- 🎭 Smooth scroll animations
-- 📱 Fully responsive design
-- ⚡ Dynamic typing effect
-- 🎯 Scroll progress indicator
-- 🔄 Parallax background effects
-- 📊 Animated counters
-- 🍔 Mobile hamburger menu
+## Contact
 
-## 🛠️ Technologies
-
-- HTML5
-- CSS3 (CSS Variables, Flexbox, Grid)
-- Vanilla JavaScript
-- Google Fonts (Inter, Space Grotesk)
-- Font Awesome Icons
-
-## 📝 Sections
-
-1. **Hero** - Dynamic introduction with typing effect
-2. **About** - Professional bio, stats, certifications, publications
-3. **Experience** - Timeline of work history
-4. **Projects** - Showcase of featured projects
-5. **Articles** - Published writings and blog posts
-6. **Open Source** - GitHub repositories
-7. **Contact** - Contact information and links
-
-## 🌐 Custom Domain (Optional)
-
-After deploying to Firebase, you can add a custom domain:
-
-1. Go to Firebase Console > Hosting
-2. Click "Add custom domain"
-3. Follow the instructions to verify and connect your domain
-
-## 📊 Firebase Hosting Features
-
-- **Global CDN**: Fast loading worldwide
-- **Free SSL**: Automatic HTTPS
-- **Custom domains**: Connect your own domain
-- **Rollback**: Easy version management
-- **Analytics**: Built-in traffic insights
-
-## 🔧 Customization
-
-### Update Content
-
-Edit `index.html` to update:
-- Personal information
-- Work experience
-- Projects
-- Articles
-- Contact details
-
-### Modify Design
-
-Edit `style.css` to customize:
-- Color scheme (CSS variables at top of file)
-- Typography
-- Spacing
-- Animations
-
-### Add Features
-
-Edit `script.js` to add:
-- New interactions
-- Additional animations
-- Custom functionality
-
-## 📈 Performance
-
-- Optimized CSS with minimal specificity
-- Efficient JavaScript with Intersection Observer
-- Lazy loading support
-- Caching headers configured
-- Clean URLs enabled
-
-## 🤝 Support
-
-For issues or questions:
 - Email: contact@ittahad.site
 - LinkedIn: [linkedin.com/in/ittahad](https://linkedin.com/in/ittahad)
 - GitHub: [github.com/ittahad](https://github.com/ittahad)
 
-## 📄 License
-
-© 2025 Ittahad Uz Zaman. All rights reserved.
-
----
-
-**Built with ❤️ using modern web technologies**
+© 2026 Ittahad Uz Zaman.

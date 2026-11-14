@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T00:00:00Z",
+  "title": "Design System: Ittahad Uz Zaman Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Pistachio Paper", "canonical": "#e7edd8", "tonalRamp": ["#1f2a14", "#3a4a26", "#586c3d", "#7a8f5c", "#9fb27f", "#c3d1a8", "#e7edd8", "#f4f7e8"] },
+      "paper-deep": { "role": "neutral", "displayName": "Deep Paper", "canonical": "#dde5ca", "tonalRamp": ["#1f2a14", "#3a4a26", "#586c3d", "#7a8f5c", "#9fb27f", "#c3d1a8", "#dde5ca", "#eef2e0"] },
+      "card": { "role": "neutral", "displayName": "Card Stock", "canonical": "#f7f9ee", "tonalRamp": ["#262a1a", "#444a30", "#666d4c", "#8a926f", "#adb494", "#cfd5bb", "#f7f9ee", "#fcfdf7"] },
+      "ink": { "role": "neutral", "displayName": "Navy Ink", "canonical": "#15203a", "tonalRamp": ["#0a1020", "#15203a", "#25345a", "#3a4a78", "#5d6c96", "#8590b0", "#b0b8cf", "#dde0ea"] },
+      "pen-blue": { "role": "primary", "displayName": "Ballpoint Blue", "canonical": "#1f43d6", "notes": "Night theme: #9db6ff.", "tonalRamp": ["#0c1b63", "#142b94", "#1f43d6", "#4562e0", "#6d86e8", "#93a6ee", "#bac6f4", "#e0e6fa"] },
+      "marker-yellow": { "role": "secondary", "displayName": "Marker Yellow", "canonical": "#f7e35c", "notes": "Night theme highlight is the same yellow at 30% alpha; solid for selection and the now node.", "tonalRamp": ["#4d4310", "#7a6b16", "#a8951d", "#d4bc2a", "#f7e35c", "#f9e982", "#fbf0a8", "#fdf7d0"] },
+      "margin-pink": { "role": "secondary", "displayName": "Margin Pink", "canonical": "#c42d55", "notes": "Night theme: #ff8fa8. Build value; the original brief named #e0476e.", "tonalRamp": ["#4a0f20", "#771a34", "#a02447", "#c42d55", "#d4587a", "#e286a0", "#efb2c4", "#f8dce5"] },
+      "field-blue": { "role": "tertiary", "displayName": "Pen-Blue Field", "canonical": "#1f43d6", "notes": "Open Source section ground. Night theme: #1c35a8. Text #f4f7e8, hand and link accent #fff09a.", "tonalRamp": ["#0c1b63", "#142b94", "#1f43d6", "#4562e0", "#6d86e8", "#93a6ee", "#bac6f4", "#e0e6fa"] },
+      "night-paper": { "role": "neutral", "displayName": "Ink-Navy Night Paper", "canonical": "#0f1830", "tonalRamp": ["#070c18", "#0f1830", "#14203d", "#1a2848", "#2b3c66", "#4a5c88", "#7886ab", "#aab3cb"] },
+      "chalk-ink": { "role": "neutral", "displayName": "Chalk Cream Ink", "canonical": "#eaefde", "tonalRamp": ["#4a5038", "#6c7355", "#8e9674", "#adb594", "#c5ccb0", "#d6dcc4", "#eaefde", "#f6f8ef"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline in Bricolage Grotesque, 740, tight tracking, max 19ch." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Role entries, clippings, spread titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and ledes, 62ch max." },
+      "hand": { "displayName": "Hand", "purpose": "Shantell Sans marginalia: short tilted phrases, fact labels, tags." },
+      "label-mono": { "displayName": "Label", "purpose": "Geist Mono for dates, typed role line, email addresses only." }
+    },
+    "shadows": [
+      { "name": "paper-lift", "value": "0 1px 0 #15203a14, 0 18px 34px -16px #15203a59, 0 3px 8px -3px #15203a33", "purpose": "Paper-like objects: note card, build note, spreads, hovered primary button. Night uses black at 25/65/40%." },
+      { "name": "tape", "value": "0 1px 3px #15203a26", "purpose": "Yellow tape strip on the note card." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Default easing: hovers, tilts, highlight growth, reveals." },
+      { "name": "highlight-draw", "value": "background-size 0% to 100% over 1s (hero) or scroll view() entry 35% to 100%", "purpose": "Marker highlight grows left to right." },
+      { "name": "stroke-draw", "value": "stroke-dashoffset 1 to 0, 0.9 to 1.1s, or scroll-driven", "purpose": "Pen circle, arrow, squiggle trace themselves." },
+      { "name": "rise", "value": "opacity 0 and translateY(18px) to rest, view() entry 0% to 55%", "purpose": "Section reveal; IntersectionObserver fallback; disabled under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "1020px" },
+      { "name": "mobile", "value": "700px" },
+      { "name": "narrow", "value": "420px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Navy ink hand-cut button for the email action.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Email me</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; padding: .85rem 1.4rem; font: 640 1rem 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: -.01em; background: #15203a; color: #e7edd8; border: 1.5px solid #15203a; border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px; text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.16,1,.3,1); } .ds-btn:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 1px 0 #15203a14, 0 18px 34px -16px #15203a59, 0 3px 8px -3px #15203a33; } .ds-btn:active { transform: none; } .ds-btn:focus-visible { outline: 2.5px dashed #1f43d6; outline-offset: 4px; border-radius: 6px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Outlined secondary action, e.g. copy email with mono address.",
+      "html": "<button class=\"ds-btn-ghost\">Copy <span class=\"ds-addr\">me@example.com</span></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: .6rem; padding: .85rem 1.4rem; font: 640 1rem 'Bricolage Grotesque', system-ui, sans-serif; background: transparent; color: #15203a; border: 1.5px solid #15203a45; border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1), background-color .2s; } .ds-btn-ghost:hover { background: #f7f9ee; transform: translateY(-2px) rotate(-1deg); } .ds-btn-ghost:focus-visible { outline: 2.5px dashed #1f43d6; outline-offset: 4px; } .ds-addr { font: 500 .86rem 'Geist Mono', ui-monospace, monospace; }"
+    },
+    {
+      "name": "Marker Highlight",
+      "kind": "custom",
+      "refersTo": "marker-yellow",
+      "description": "Yellow band behind the lower half of key words.",
+      "html": "<h2 class=\"ds-title\">Systems that <span class=\"ds-hl\">scale</span></h2>",
+      "css": ".ds-title { margin: 0; font: 740 2.4rem/1.02 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: -.034em; color: #15203a; } .ds-hl { background: linear-gradient(#f7e35c, #f7e35c) 0 86% / 100% .56em no-repeat; padding-inline: .06em; margin-inline: -.06em; }"
+    },
+    {
+      "name": "Taped Note Card",
+      "kind": "card",
+      "refersTo": "notecard",
+      "description": "Tilted card stock with tape and hand-labelled facts.",
+      "html": "<div class=\"ds-note\"><span class=\"ds-tape\"></span><h3>Field notes</h3><dl><div><dt>role</dt><dd>Senior backend engineer</dd></div><div><dt>stack</dt><dd>.NET, SQL</dd></div></dl></div>",
+      "css": ".ds-note { position: relative; background: #f7f9ee; color: #15203a; padding: 2.2rem 1.6rem 1.4rem; transform: rotate(1.6deg); border-radius: 3px; box-shadow: 0 1px 0 #15203a14, 0 18px 34px -16px #15203a59, 0 3px 8px -3px #15203a33; font-family: 'Bricolage Grotesque', system-ui, sans-serif; } .ds-note h3 { margin: 0 0 .9rem; font-size: 1.3rem; font-weight: 600; } .ds-note dl { margin: 0; } .ds-note dl > div { display: grid; grid-template-columns: 6rem 1fr; gap: .8rem; padding: .62rem 0; border-top: 1.5px dashed #15203a45; } .ds-note dt { font: 500 .92rem 'Shantell Sans', 'Segoe Print', cursive; color: #1f43d6; } .ds-note dd { margin: 0; font-weight: 500; } .ds-tape { position: absolute; top: -14px; left: 50%; width: 112px; height: 30px; margin-left: -56px; background: #f7e35cd9; transform: rotate(-3.5deg); box-shadow: 0 1px 3px #15203a26; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "tag-chip",
+      "description": "Outlined pill for stack tags.",
+      "html": "<ul class=\"ds-tags\"><li>.NET</li><li>Azure</li></ul>",
+      "css": ".ds-tags { display: flex; gap: .4rem; margin: 0; padding: 0; list-style: none; } .ds-tags li { font: 500 .82rem 'Bricolage Grotesque', system-ui, sans-serif; padding: .2rem .65rem; border: 1.5px solid #15203a45; border-radius: 99px; color: #15203ad9; }"
+    },
+    {
+      "name": "Now Sticker",
+      "kind": "custom",
+      "refersTo": "sticker",
+      "description": "Margin-pink blob marking the current role.",
+      "html": "<span class=\"ds-sticker\">now</span>",
+      "css": ".ds-sticker { display: inline-block; font: 700 1rem 'Bricolage Grotesque', system-ui, sans-serif; color: #e7edd8; background: #c42d55; padding: .05rem .75rem .15rem; border-radius: 40% 60% 55% 45% / 55% 45% 60% 40%; transform: rotate(-5deg); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "description": "Text link with marker band on hover and active.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Work</a><a href=\"#\" class=\"is-active\">Writing</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 1.6rem; } .ds-nav a { text-decoration: none; font: 520 .95rem 'Bricolage Grotesque', system-ui, sans-serif; color: #15203ad9; padding: .3rem .1rem; background: linear-gradient(#f7e35c, #f7e35c) 0 92% / 0% .5em no-repeat; transition: background-size .35s cubic-bezier(.16,1,.3,1), color .2s; } .ds-nav a:hover, .ds-nav a.is-active { color: #15203a; background-size: 100% .5em; } .ds-nav a:focus-visible { outline: 2.5px dashed #1f43d6; outline-offset: 4px; border-radius: 6px; }"
+    },
+    {
+      "name": "Index Row",
+      "kind": "custom",
+      "description": "Ruled project index row that fills with marker yellow on hover.",
+      "html": "<a class=\"ds-row\" href=\"#\"><b>Project</b><span>One-line description</span></a>",
+      "css": ".ds-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 1.15rem .6rem; border-top: 1.5px dashed #15203a45; text-decoration: none; color: #15203a; font-family: 'Bricolage Grotesque', system-ui, sans-serif; background: linear-gradient(#f7e35c, #f7e35c) 0 100% / 100% 0% no-repeat; transition: background-size .35s cubic-bezier(.16,1,.3,1); } .ds-row:hover { background-size: 100% 100%; } .ds-row b { font-weight: 700; letter-spacing: -.02em; } .ds-row span { color: #15203ad9; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineer's Logbook",
+    "overview": "The page is a person's working notes, not an agency stage. Dot-grid notebook paper in pale pistachio carries blue-black ink; a ballpoint blue annotates and links; a yellow marker highlights; a margin pink ticks things off. Trust comes from first-person voice, handwriting, and marks that look made by a hand, then from dated entries, an index, clippings and repos.\n\nDensity is calm and editorial: large tight display type, generous section padding, small tilted paper objects that break the grid by a degree or two. The night theme is the same notebook after dark. The Open Source section is the one saturated moment, a full-bleed pen-blue field with its own lighter dot grid.",
+    "keyCharacteristics": [
+      "Dot-grid paper ground on every light and night surface (26px pitch)",
+      "Four drawing tools only: ink, ballpoint, marker, margin pen",
+      "Handwritten marginalia as a distinct third voice, never body copy",
+      "Hand-wobbled shapes and 1 to 6 degree tilts on paper objects",
+      "Marks draw themselves on scroll (highlights grow, strokes trace)"
+    ],
+    "rules": [
+      { "name": "The Four Tools Rule", "body": "Ink writes, ballpoint annotates, marker highlights, pink checks. A color used outside its tool's job is off-system.", "section": "colors" },
+      { "name": "The One Field Rule", "body": "Exactly one section is drenched in pen blue. Do not add a second.", "section": "colors" },
+      { "name": "The Dates Only Rule", "body": "Mono is for dates, the typed role line, and addresses. It never sets headings or body.", "section": "typography" },
+      { "name": "The Margin Voice Rule", "body": "Handwriting is short (a phrase), always tilted, always Ballpoint Blue (or Field Highlight on the field). Never a paragraph.", "section": "typography" },
+      { "name": "The Real Paper Rule", "body": "Only objects that could be a sheet of paper cast a shadow; text, rows, and chips never do.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the dot grid under all paper surfaces and make the field section carry its own lighter grid.",
+      "Do use Ballpoint Blue for every link and annotation, with a 2px underline on text links.",
+      "Do tilt paper objects by 0.6 to 1.6 degrees and hand-script labels by 1.5 to 6 degrees; straighten on hover.",
+      "Do drive highlights and strokes with scroll (view timeline), fall back to IntersectionObserver, and render them fully drawn under reduced motion.",
+      "Do provide the night theme as a recolor of the same marks (chalk ink, lightened pen and pink, translucent marker)."
+    ],
+    "donts": [
+      "Don't return to dark monochrome with a single white accent, or to the hero plus card-grid agency template.",
+      "Don't add photos, stock imagery, or invented testimonials; proof is real roles, projects, writing, repos.",
+      "Don't use hard offset shadows, gradients as decoration, or glass; depth is paper-on-paper.",
+      "Don't set body, headings, or labels in the hand or mono faces outside their named jobs.",
+      "Don't use pink for anything but ticks and the \"now\" sticker, or add a second pen-blue field section."
+    ]
+  }
+}

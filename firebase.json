@@ -7,7 +7,9 @@
       "**/node_modules/**",
       "README.md",
       "deploy.ps1",
-      "deploy.sh"
+      "deploy.sh",
+      "PRODUCT.md",
+      "**/*.backup"
     ],
     "rewrites": [
       {
